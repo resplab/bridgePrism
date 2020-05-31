@@ -22,7 +22,17 @@ model_run<-function(model_input = NULL)
   #                               CFRelatedDiabetes      =model_input$CFRelatedDiabetes,
   #                               ageAtDiagnosis         =model_input$ageAtDiagnosis        )
 
-  return(as.list(results))
+  if(!is.null(model_input$sleep_time))
+  {
+    for(i in 1:10)
+    {
+      prism_set_progress(i/10)
+      Sys.sleep(model_input$sleep_time/10)
+    }
+
+  }
+
+  return(c(as.list(thisSession),as.list(input)))
 }
 
 
@@ -78,6 +88,8 @@ flatten_list<-function(lst,prefix="")
   }
   return(out)
 }
+
+
 
 
 

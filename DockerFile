@@ -1,0 +1,6 @@
+#REPLACE MODEL WITH MODEL NAME
+FROM opencpu/base
+RUN R -e 'remotes::install_github("resplab/model")' 
+RUN R -e 'install.packages("remotes")'
+RUN R -e 'remotes::install_github("resplab/modelPrism")'
+RUN echo "opencpu:opencpu" | chpasswd
